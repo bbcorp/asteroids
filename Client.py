@@ -3,7 +3,10 @@ from pygame.locals import *
 pygame.init()
 pygame.font.init()
 mainclock= pygame.time.Clock()
-window=pygame.display.set_mode((360,560,),0,32)
+# Taille de la fenêtre
+height=800
+width=800
+window=pygame.display.set_mode((width,height,),0,32)
 pygame.display.set_caption('SpaceAce')
 score=0
 Texty = pygame.font.Font('SUPERPOI_R.TTF', 20)
@@ -37,11 +40,8 @@ son=0
 son2=0
 bonus=0
 highscore=0
-
 bugfix1=False
 bugfix2=False
-
-
 shoot=False
 test=False
 menu=True
@@ -52,7 +52,6 @@ r=True
 r2=True
 dronetop=0
 dronetop2=0
-
 moveleft=False
 moveright=False
 moveup=False
@@ -61,11 +60,11 @@ death=pygame.mixer.Sound('death.wav')
 pygame.mixer.music.load('chavmusic.mp3')
 pygame.mixer.music.play(-1)
 makesound=False
-back=[pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5),pygame.Rect(random.randint(0,350),random.randint(0,500),5,5)]
+back=[pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5),pygame.Rect(random.randint(0,width-10),random.randint(0,height-50),5,5)]
 backspd=1
+
 while True:
     while game==False:
-        
         moveleft=False
         moveright=False
         moveup=False
@@ -78,7 +77,7 @@ while True:
         db=[]
         pb=[]
         p=-250
-        player=pygame.Rect(170,380,20,20)
+        player=pygame.Rect(width/2,width,20,20)
         window.fill (B)
         for event in pygame.event.get():
             if event.type==QUIT:
@@ -87,9 +86,6 @@ while True:
             if event.type== KEYDOWN:
                 if event.key== K_DOWN and option==1:
                      option=option-1
-               
-                if event.key==K_UP and option==1:
-                    option=option+1
                 elif event.key==K_UP and option==0:
                     option=option+1
 # Remplacement event.key==K_RIGHT par event.key==K_RETURN
@@ -99,19 +95,16 @@ while True:
                 if event.key==K_RETURN and option==1: 
                     game=True
                     score=0
-                    
         if option==1:
-            player.top=380
+            player.top=height/2
         if option==0:
-            player.top=440
+            player.top=height/2+60
         for booz in back:
             pygame.draw.rect(window,W,booz)
             booz.top+=backspd
-            if booz.top>=500:
-                booz.left=random.randint(0,300)
+            if booz.top>=height-30:
+                booz.left=random.randint(0,width-10)
                 booz.top=-5
-    
-            
         f = open('high_score.txt','r')
         highscore = int(f.read() )
         f.close()
@@ -120,48 +113,33 @@ while True:
             f = open('high_score.txt','w')
             f.write(str(highscore))
             f.close()
-            
-        
-        
-        
-          
-            
-        
-                 
-        
-            
-                
         text = Texty.render('score: %d' % score, 0, (0,0,255))
         text2 = Texty.render('Highscore: %d' % highscore, 0, (0,0,255))
         text3=  Textyy.render('music by Peter H. ', 0, (0,0,255))
         text4=  Textyy.render('code by chavdar d. ', 0, (0,0,255))
-        text5=  Texty.render('space ace ', 0, (255,0,0))
+        text5=  Texty.render('space ace', 0, (255,0,0))
         text6=  Texty.render('start', 0, (255,0,0))
         text7=  Texty.render('quit', 0, (255,0,0))
         text8=  Texty.render('Press ENTER', 0, (0,255,0))
         text9=  Texty.render('to select', 0, (0,255,0))
-        
         window.blit(text, (5,0))
         window.blit(text2, (5,50))
-        
-        window.blit(text3, (5,510))
-        window.blit(text4, (5,530))
-        
-        window.blit(text5, (80,150))
-        window.blit(text6, (220,375))
-        window.blit(text7, (220,435))
-        window.blit(text8, (80,220))
-        window.blit(text9, (80,270))
+        window.blit(text3, (5,height-50))
+        window.blit(text4, (5,height-30))
+        window.blit(text5, (width/2-50,height/2-300))
+        window.blit(text6, (width/2+100,height/2))
+        window.blit(text7, (width/2+100,height/2+60))
+        window.blit(text8, (width/2-50,height/2-200))
+        window.blit(text9, (width/2-50,height/2-150))
         #pygame.draw.rect(window,R,player)
         window.blit(shipx,(player.left-2,player.top))
         mainclock.tick(30)
         pygame.display.update()
         
     while game :
-        
         if p>-250:
             p=p-1
-        powerbar=pygame.Rect(330,560,20,p)
+        powerbar=pygame.Rect(width-20,height,20,p)
         counter=counter+1
         if p>=-1:
             shield=False
@@ -185,11 +163,8 @@ while True:
                     moveleft=True
                 if event.key== ord('f') and p<=-50:
                     shoot=True
-                    
                 if event.key== ord('s') and p<=-1:
                     shield=True
-                
-                
             if event.type==KEYUP:
                 if event.key== K_DOWN:
                     movedown=False
@@ -204,8 +179,6 @@ while True:
                     shield=False
                     a=225
                     shadow=[]
-        
-            
         i=random.randint(0,100)
         son=random.randint(0,70)
         son2=random.randint(0,70)
@@ -220,7 +193,9 @@ while True:
             p=p+50
             pb.append(pygame.Rect(player.left+5,player.top,6,16))
             shoot=False
-        
+			
+# Tir du joueur
+  
         for x in pb:
             x.top-=bs
             pygame.draw.rect(window,BL,x)
@@ -232,7 +207,7 @@ while True:
                     drone.remove(z)
                     pb.remove(x)
                     bugfix1=True
-                    drone.append(pygame.Rect(random.randint(0,340),-40,20,20))
+                    drone.append(pygame.Rect(random.randint(0,width-20),-40,20,20))
                     bonus=bonus+50
             for z in drone2:
                 if z.colliderect(x):
@@ -243,7 +218,7 @@ while True:
                     if bugfix1==False:
                         pb.remove(x)
                         bugfix2=True
-                    drone2.append(pygame.Rect(random.randint(0,340),-40,20,20))
+                    drone2.append(pygame.Rect(random.randint(0,width-20),-40,20,20))
                     bonus=bonus+50
             for z in astroid:
                 if z.colliderect(x):
@@ -252,113 +227,41 @@ while True:
                     if bugfix1==False and bugfix2==False:
                         pb.remove(x)
                     bonus=bonus+3
-        
             if x.top<-80:
                 pb.remove(x)
         if makesound:
-            
             makesound=False
         bugfix1=False
         bugfix2=False
         score=counter/10 +bonus
-        if test:
-            astroid.append(pygame.Rect(random.randint(0,320),0,35,35))
-            test=False
         for booz in back:
             pygame.draw.rect(window,W,booz)
             booz.top+=backspd
-            if booz.top>=500:
-                booz.left=random.randint(0,355)
+            if booz.top>=height-30:
+                booz.left=random.randint(0,width-10)
                 booz.top=-5
         for x in astroid:
             x.top+=5
             pygame.draw.rect(window,P,x)
             if x.colliderect(player)and shield==False:
                 game=False
-            if x.top >600:
+            if x.top >width-60:
                 astroid.remove(x)
         if counter==120 :
             drone.append(pygame.Rect(0,0,20,20))
         if counter==520 :
             drone2.append(pygame.Rect(0,0,20,20))
-        
-        
-            
-        for x in drone :
-            pygame.draw.rect(window,BL,x)
-            x.top+=dronetop
-            if r:
-                x.left+=2
-            if x.left>=340:
-                r=False
-                dronetop=random.randint(-1,1)
-                
-            if r==False:
-                x.left-=2
-            if x.left<=0:
-                r=True
-                dronetop=random.randint(-1,1)
-            if x.top<-10:
-                dronetop=1
-            if x.top >200:
-                dronetop=-1
-            if son<=1+counter/dbfrqc:
-                db.append(pygame.Rect(x.left,x.top,5,10))
-        for w in drone2 :
-            pygame.draw.rect(window,BL,w)
-            w.top+=dronetop2
-            if r2:
-                w.left+=2
-            if w.left>=340:
-                r2=False
-                dronetop2=random.randint(-1,1)
-                
-            if r2==False:
-                w.left-=2
-            if w.left<=0:
-                r2=True
-                dronetop2=random.randint(-1,1)
-            if w.top<-10:
-                dronetop2=1
-            if w.top >220:
-                dronetop2=-1
-            
-            if son2<=1+counter/dbfrqc:
-                db.append(pygame.Rect(w.left,w.top,5,10))
-        
-            
-            
-        for x in db:
-
-            x.top+=random.randint(3,5)
-            if x.colliderect(player)and shield==False:
-                game=False
-            
-            pygame.draw.rect(window,R,x)
-            if x.top>=580:
-                db.remove(x)
-            
-            
-            
-                
-                
-                
-                
-            
-
         if moveup and player.top>0:
             player.top-=ms
-        if movedown and player.top<540:
+        if movedown and player.top<height-20:
             player.top+=ms
         if moveleft and player.left>0:
             player.left-=ms
-        if moveright and player.left<340:
+        if moveright and player.left<width-20:
             player.left+=ms
         text = Texty.render('score: %d' % score, 0, (0,0,255))   
         window.blit(text, (5,0))
-        
         #pygame.draw.rect(window,(255, 0, 0, 122),player)
-        
         if shield==False:
             blink=255
         if shield==True:
@@ -378,4 +281,3 @@ while True:
         pygame.draw.rect(window,P,powerbar)
         mainclock.tick(80)
         pygame.display.update()
-
